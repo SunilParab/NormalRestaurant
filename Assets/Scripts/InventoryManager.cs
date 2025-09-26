@@ -5,10 +5,19 @@ public class InventoryManager : MonoBehaviour
 
     public static InventoryManager reference;
 
+    public enum ItemType
+    {
+        Fish,
+        Egg,
+        Fruit
+    }
+
     //UI reference
 
     //Food items
+    int fish = 0;
     int eggs = 0;
+    int fruit = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,8 +30,11 @@ public class InventoryManager : MonoBehaviour
     {
 
     }
-    
 
+    public void GainEgg()
+    {
+        eggs++;
+    }
 
     
 }
