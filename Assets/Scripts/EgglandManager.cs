@@ -6,7 +6,7 @@ public class EgglandManager : SceneManager
 
     public static EgglandManager reference;
 
-    public static GameObject eggBasket;
+    public EggBasket eggBasket;
 
     void Awake()
     {
@@ -27,14 +27,27 @@ public class EgglandManager : SceneManager
 
     protected override void SceneBehavior()
     {
+        /*
         //Get mouse position
         Vector2 screenPosition = Mouse.current.position.ReadValue();
         Vector3 worldPositionInput = new Vector3(screenPosition.x, screenPosition.y, 0);
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(worldPositionInput);
 
         eggBasket.transform.position = worldPosition;
+        */
 
     }
 
+    public override void Activate()
+    {
+        base.Activate();
+        eggBasket.Activate();
+    }
+
+    public override void Deactivate()
+    {
+        base.Deactivate();
+        eggBasket.Deactivate();
+    }
 
 }

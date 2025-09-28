@@ -4,5 +4,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EggDrop : MonoBehaviour
 {
-    //Don't need this for functionality, maybe sfx
+
+    void Update()
+    {
+        if (transform.position.y <= -10)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }

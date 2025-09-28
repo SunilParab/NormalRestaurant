@@ -2,18 +2,28 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    public bool Active;
+    public bool active;
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (!Active) { return; }
+        if (!active) { return; }
         SceneBehavior();
     }
 
     protected virtual void SceneBehavior()
     {
-        
+
+    }
+
+    public virtual void Activate()
+    {
+        active = true;
+    }
+
+    public virtual void Deactivate()
+    {
+        active = false;
     }
 
 }

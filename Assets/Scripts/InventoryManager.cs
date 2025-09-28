@@ -19,6 +19,11 @@ public class InventoryManager : MonoBehaviour
     int eggs = 0;
     int fruit = 0;
 
+    void Awake()
+    {
+        reference = this;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

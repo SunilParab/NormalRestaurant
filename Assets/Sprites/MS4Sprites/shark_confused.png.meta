@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shark_confused_0: 2085572289047113138
+      shark_confused_1: -5624777442409895717
+      shark_confused_2: 9099992649289230683
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

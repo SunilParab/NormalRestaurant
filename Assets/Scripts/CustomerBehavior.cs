@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class CustomerBehavior : MonoBehaviour
 {
-
+    [SerializeField]
     InventoryManager.ItemType preference;
+
+    int hunger = 2;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,9 +33,29 @@ public class CustomerBehavior : MonoBehaviour
                 preference = InventoryManager.ItemType.Fruit;
                 break;
         }
-        
+
         //TODO pick random face
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Food"))
+        {
+            Eat(other.GetComponent<ThrownFood>().type);
+            Destroy(other.gameObject);
+        }
+    }
+
+    void Eat(InventoryManager.ItemType foodType)
+    {
+        if (foodType == preference)
+        {
+            hunger--;
+            if (hunger <= 0) {
+                Destroy(gameObject);
+            }
+        }
     }
 
 }

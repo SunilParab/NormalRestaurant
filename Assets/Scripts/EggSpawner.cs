@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class CustomerSpawner : MonoBehaviour
+public class EggSpawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject customerPrefab;
+    GameObject eggPrefab;
 
     [SerializeField]
-    float spawnTimer = 5;
+    float spawnTimer = 1;
     float curTimer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,17 +22,18 @@ public class CustomerSpawner : MonoBehaviour
         if (curTimer < 0)
         {
             curTimer += spawnTimer;
-            SpawnCustomer();
+            SpawnEgg();
         }
     }
 
-    void SpawnCustomer()
+    void SpawnEgg()
     {
-        Instantiate(customerPrefab, MakeSpawnPos(), new Quaternion());
+        GameObject newEgg = Instantiate(eggPrefab, new Vector3(), new Quaternion());
+        newEgg.transform.SetParent(transform.parent);
+        newEgg.transform.localPosition = MakeSpawnPos();
     }
 
     Vector3 MakeSpawnPos() {
-        return new Vector3(Random.Range(-4,4),Random.Range(-2,2),Random.Range(10,90));
+        return new Vector3(Random.Range(-7,7),Random.Range(-4,4),0);
     }
-
 }
