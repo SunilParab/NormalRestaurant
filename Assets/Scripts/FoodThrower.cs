@@ -47,6 +47,30 @@ public class FoodThrower : MonoBehaviour
 
     void Throw()
     {
+
+
+        switch (curSlot)
+        {
+            case 0:
+                if (!InventoryManager.reference.SpendFish(1))
+                {
+                    return;
+                }
+                break;
+            case 1:
+                if (!InventoryManager.reference.SpendEgg(1))
+                {
+                    return;
+                }
+                break;
+            case 2:
+                if (!InventoryManager.reference.SpendFruit(1))
+                {
+                    return;
+                }
+                break;
+        }
+
         //Get mouse position
         Vector2 screenPosition = Mouse.current.position.ReadValue();
         Vector3 worldPositionInput = new Vector3(screenPosition.x, screenPosition.y, 0);
@@ -54,6 +78,7 @@ public class FoodThrower : MonoBehaviour
 
         GameObject itemRef = Instantiate(itemPrefabs[curSlot], worldPosition, new Quaternion());
         itemRef.GetComponent<ThrownFood>().SetValues((InventoryManager.ItemType)curSlot);
+
     }
 
     public void Activate()

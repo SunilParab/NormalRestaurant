@@ -8,7 +8,7 @@ public class ThrownFood : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GetComponent<Rigidbody>().AddForce(0,5,100,ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(0,5,80,ForceMode.Impulse);
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class ThrownFood : MonoBehaviour
         }
     }
 
-    public void SetValues(InventoryManager.ItemType type) //TODO just do this in editor
+    public void SetValues(InventoryManager.ItemType type)
     {
         this.type = type;
     }

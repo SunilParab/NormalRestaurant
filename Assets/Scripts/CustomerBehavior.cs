@@ -11,6 +11,7 @@ public class CustomerBehavior : MonoBehaviour
     void Start()
     {
         InitializeValues();
+        GameManager.customerNumber++;
     }
 
     // Update is called once per frame
@@ -34,8 +35,8 @@ public class CustomerBehavior : MonoBehaviour
                 break;
         }
 
-        //TODO pick random face
-
+        GameObject icon = Instantiate(InventoryManager.reference.icons[(int)preference], transform);
+        icon.transform.Translate(0,0.5f,-0.1f);
     }
 
     void OnTriggerEnter(Collider other)
@@ -52,8 +53,10 @@ public class CustomerBehavior : MonoBehaviour
         if (foodType == preference)
         {
             hunger--;
-            if (hunger <= 0) {
+            if (hunger <= 0)
+            {
                 Destroy(gameObject);
+                GameManager.customerNumber--;
             }
         }
     }

@@ -7,7 +7,7 @@ public class EggBasket : MonoBehaviour
 {
 
     Rigidbody2D rb;
-    Collider2D col;
+    [SerializeField] Cooldown cd;
     float force = 10;
 
     bool active = false;
@@ -15,7 +15,6 @@ public class EggBasket : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
         Deactivate();
     }
 
@@ -26,7 +25,7 @@ public class EggBasket : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !cd.CheckCooldown())
         {
             //Get mouse position
             Vector2 screenPosition = Mouse.current.position.ReadValue();
@@ -37,30 +36,30 @@ public class EggBasket : MonoBehaviour
 
             rb.AddForce(forceVector.normalized * force, ForceMode2D.Impulse);
 
+            cd.StartCooldown();
+
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Egg"))
         {
             Destroy(collision.gameObject);
             if (active)
             {
-                InventoryManager.reference.GainEgg();
+                InventoryManager.reference.GainEgg(1);
             }
         }
     }
 
     public void Activate()
     {
-        //col.enabled = true;
         active = true;
     }
 
     public void Deactivate()
     {
-        //col.enabled = false;
         active = false;
     }
 

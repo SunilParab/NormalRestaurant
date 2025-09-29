@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -6,15 +7,18 @@ public class GameManager : MonoBehaviour
     public enum Scene
     {
         Store,
-        Farm,
         Sea,
-        Eggland
+        Eggland,
+        Farm
     }
 
     public static Scene curScene = Scene.Store;
 
     [SerializeField]
     Vector3[] positions;
+
+    public static int customerNumber;
+    [SerializeField] int maxCustomerNumber;
 
     public static GameManager reference;
 
@@ -35,6 +39,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (customerNumber >= maxCustomerNumber) {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScreen");
+        }
+
+
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             int newScene = (int)curScene + 1;
@@ -61,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     void ChangeScene(Scene newScene)
     {
-        print(newScene);
+
         if (curScene == Scene.Store)
         {
             StoreManager.reference.Deactivate();
@@ -80,7 +90,7 @@ public class GameManager : MonoBehaviour
         }
 
         curScene = newScene;
-        cameraRef.transform.position = new Vector3(positions[(int)newScene].x, 0, -10);
+        cameraRef.transform.position = positions[(int)newScene];
 
         if (newScene == Scene.Store)
         {

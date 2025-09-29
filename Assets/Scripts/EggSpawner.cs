@@ -34,6 +34,6 @@ public class EggSpawner : MonoBehaviour
     }
 
     Vector3 MakeSpawnPos() {
-        return new Vector3(Random.Range(-7,7),Random.Range(-4,4),0);
+        return new Vector3(Random.Range(-7,7),5,0);
     }
 }

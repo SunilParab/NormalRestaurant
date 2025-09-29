@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1201344473634017736}
   - component: {fileID: 5892983874974562395}
   - component: {fileID: 6262593497398096734}
+  - component: {fileID: 5618976565594114076}
   m_Layer: 0
   m_Name: ThownFruit
   m_TagString: Food
@@ -150,4 +151,16 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
+--- !u!114 &5618976565594114076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906124129330079083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af203592975ba5546809e93b15741e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
