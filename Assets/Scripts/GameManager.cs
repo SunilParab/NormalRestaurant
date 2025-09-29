@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Vector3[] positions;
 
-    public static int customerNumber;
-    [SerializeField] int maxCustomerNumber;
+    public int customerNumber;
+    [SerializeField] int maxCustomerNumber = 20;
 
     public static GameManager reference;
 
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         reference = this;
+        curScene = Scene.Store;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

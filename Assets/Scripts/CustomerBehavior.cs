@@ -11,7 +11,7 @@ public class CustomerBehavior : MonoBehaviour
     void Start()
     {
         InitializeValues();
-        GameManager.customerNumber++;
+        GameManager.reference.customerNumber++;
     }
 
     // Update is called once per frame
@@ -56,7 +56,7 @@ public class CustomerBehavior : MonoBehaviour
             if (hunger <= 0)
             {
                 Destroy(gameObject);
-                GameManager.customerNumber--;
+                GameManager.reference.customerNumber--;
             }
         }
     }
